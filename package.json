@@ -76,6 +76,10 @@
     "contents": ".",
     "anyBranch": false
   },
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha"
+  },
   "dependencies": {
     "haye": "^2.0.2"
   }
