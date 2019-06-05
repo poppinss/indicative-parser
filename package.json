@@ -75,5 +75,8 @@
   "np": {
     "contents": ".",
     "anyBranch": false
+  },
+  "dependencies": {
+    "haye": "^2.0.2"
   }
 }
