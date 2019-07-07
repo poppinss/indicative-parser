@@ -463,6 +463,55 @@ test.group('Parser | schema', () => {
 
     assert.throw(output, 'make sure to define rules for user.username')
   })
+
+  test('convert rule names to camelCase', (assert) => {
+    const output = parse({
+      username: 'date_format',
+      'user.username': 'date_format',
+      'users.*.username': 'date_format',
+    })
+
+    assert.deepEqual(output, {
+      username: {
+        type: 'literal',
+        rules: [{
+          name: 'dateFormat',
+          args: [],
+        }],
+      },
+      user: {
+        type: 'object',
+        rules: [],
+        children: {
+          username: {
+            type: 'literal',
+            rules: [{
+              name: 'dateFormat',
+              args: [],
+            }],
+          },
+        },
+      },
+      users: {
+        type: 'array',
+        rules: [],
+        each: {
+          '*': {
+            rules: [],
+            children: {
+              username: {
+                type: 'literal',
+                rules: [{
+                  name: 'dateFormat',
+                  args: [],
+                }],
+              },
+            },
+          },
+        },
+      },
+    })
+  })
 })
 
 test.group('Parser | messages', () => {
@@ -540,6 +589,34 @@ test.group('Parser | messages', () => {
         required: 'The field is required',
       },
       fields: {},
+    })
+  })
+
+  test('convert rule name to camelcase', (assert) => {
+    const output = messagesParser({
+      'date_format': 'Invalid date format',
+    })
+
+    assert.deepEqual(output, {
+      rules: {
+        dateFormat: 'Invalid date format',
+      },
+      fields: {},
+    })
+  })
+
+  test('convert field specific messages rule name to camelcase', (assert) => {
+    const output = messagesParser({
+      'dob.date_format': 'Invalid date format',
+    })
+
+    assert.deepEqual(output, {
+      rules: {},
+      fields: {
+        dob: {
+          dateFormat: 'Invalid date format',
+        },
+      },
     })
   })
 })

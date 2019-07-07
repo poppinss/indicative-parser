@@ -21,6 +21,10 @@ import {
   Messages,
 } from './contracts'
 
+function toCamelCase (ruleName: string): string {
+  return ruleName.replace(/_(\w)/g, (_match, group) => group.toUpperCase())
+}
+
 /**
  * Updates rules on the given node. If node is missing, then a literal node is
  * created automatically. Literal nodes can later transform into `object` and
@@ -193,7 +197,9 @@ export function rulesParser (schema: Schema): ParsedSchema {
       }
 
       if (typeof (rules) === 'string') {
-        parsedRules = new Pipe(rules, new ArrayPresenter())
+        parsedRules = new Pipe(rules, new ArrayPresenter()).map((rule) => {
+          return { name: toCamelCase(rule.name), args: rule.args }
+        })
       } else {
         parsedRules = rules
       }
@@ -231,7 +237,7 @@ export function messagesParser (schema: Messages): ParsedMessages {
     .reduce((result: ParsedMessages, field: string) => {
       const message = schema[field]
       const tokens = field.split('.')
-      const rule = tokens.pop() as string
+      const rule = toCamelCase(tokens.pop() as string)
 
       /**
        * If token length is 1, then it is a plain rule vs `field.rule`
