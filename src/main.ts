@@ -243,7 +243,7 @@ export function messagesParser (schema: Messages): ParsedMessages {
        * If token length is 1, then it is a plain rule vs `field.rule`
        */
       if (!tokens.length) {
-        result.rules = { [rule]: message }
+        result.rules[rule] = message
         return result
       }
 

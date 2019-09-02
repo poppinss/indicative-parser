@@ -619,4 +619,36 @@ test.group('Parser | messages', () => {
       },
     })
   })
+
+  test('parse multiple messages for just rules', (assert) => {
+    const output = messagesParser({
+      'required': 'The field is required',
+      'min': 'Must be over 10',
+    })
+
+    assert.deepEqual(output, {
+      rules: {
+        required: 'The field is required',
+        min: 'Must be over 10',
+      },
+      fields: {},
+    })
+  })
+
+  test('parse multiple messages for fields', (assert) => {
+    const output = messagesParser({
+      'username.required': 'Username is required',
+      'username.alpha': 'Username must be alpha',
+    })
+
+    assert.deepEqual(output, {
+      rules: {},
+      fields: {
+        username: {
+          required: 'Username is required',
+          alpha: 'Username must be alpha',
+        },
+      },
+    })
+  })
 })
