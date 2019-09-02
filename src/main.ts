@@ -7,8 +7,8 @@
 * file that was distributed with this source code.
 */
 
-import * as Pipe from 'haye/dist/haye-pipe'
-import * as ArrayPresenter from 'haye/dist/haye-array-presenter'
+import Pipe from 'haye/dist/haye-pipe'
+import ArrayPresenter from 'haye/dist/haye-array-presenter'
 
 import {
   Schema,

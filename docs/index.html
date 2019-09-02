@@ -63,7 +63,9 @@
 				<div align="center">
 					<img src="https://res.cloudinary.com/adonisjs/image/upload/q_100/v1557762307/poppinss_iftxlt.jpg" width="600px">
 				</div>
-				<h1 id="indicative-parser">Indicative Parser</h1>
+				<a href="#indicative-parser" id="indicative-parser" style="color: inherit; text-decoration: none;">
+					<h1>Indicative Parser</h1>
+				</a>
 				<blockquote>
 					<p>Converts indicative rules and messages schema to a tree</p>
 				</blockquote>
@@ -77,14 +79,18 @@
 				<p>Do note, that the <code>literal</code> <strong>type is not equal to literal values in Javascript</strong>. For parser, the literal nodes are nodes with no leaf.</p>
 				<!-- START doctoc generated TOC please keep comment here to allow auto update -->
 				<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-				<h2 id="table-of-contents">Table of contents</h2>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of contents</h2>
+				</a>
 				<ul>
 					<li><a href="#why-indicative-needs-a-parser">Why Indicative needs a parser?</a></li>
 					<li><a href="#usage">Usage</a></li>
 					<li><a href="#maintainers">Maintainers</a></li>
 				</ul>
 				<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-				<h2 id="why-indicative-needs-a-parser-">Why Indicative needs a parser?</h2>
+				<a href="#why-indicative-needs-a-parser" id="why-indicative-needs-a-parser" style="color: inherit; text-decoration: none;">
+					<h2>Why Indicative needs a parser?</h2>
+				</a>
 				<p>If you look at the Indicative schema, it is very concise and developer friendly. However, the same schema needs to be parsed to execute the validation rules.</p>
 				<pre><code class="language-js">{
   <span class="hljs-attr">username</span>: <span class="hljs-string">'required'</span>,
@@ -92,7 +98,9 @@
 }</code></pre>
 				<p>One way is to loop over the schema object keys, split them by <code>.</code> and then inline execute the validations for each field. This process is very straight forward, but will have performance issues.</p>
 				<p>Instead, we pre-compile the schema (later cache it) and generate a tree, which is easier to reason about and then generated optimized functions from the parsed tree.</p>
-				<h2 id="usage">Usage</h2>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
 				<p>Install the package from npm registry as follows:</p>
 				<pre><code class="language-sh">npm i indicative-parser@alpha
 
@@ -139,7 +147,9 @@ rulesParser({
     }
   }
 }</code></pre>
-				<h2 id="maintainers">Maintainers</h2>
+				<a href="#maintainers" id="maintainers" style="color: inherit; text-decoration: none;">
+					<h2>Maintainers</h2>
+				</a>
 				<p><a href="https://github.com/thetutlage">Harminder virk</a></p>
 			</div>
 		</div>
@@ -182,6 +192,7 @@ rulesParser({
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -230,7 +241,7 @@ rulesParser({
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
