@@ -89,7 +89,7 @@ function parseFieldForRules (
   rules: ParsedRule[],
   out: ParsedSchema | SchemaNodeArray,
   index = 0,
-) {
+): void {
   const token = tokens[index++]
 
   /**
@@ -211,8 +211,8 @@ export function rulesParser (schema: Schema): ParsedSchema {
 
 /**
  * Parses an object of messages to [[ParsedMessages]] list. The messages list
- * is simpler than rules tree, since compiler can use the schema tree to find the
- * appropriate messages from the flat list of messages.
+ * is simpler than rules tree, since compiler can use the schema tree to find
+ * the appropriate messages from the flat list of messages.
  *
  * @example
  * ```
