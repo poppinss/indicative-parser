@@ -43,7 +43,7 @@
     "del-cli": "^3.0.0",
     "doctoc": "^1.4.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-adonis": "^1.0.1",
+    "eslint-plugin-adonis": "^1.0.2",
     "husky": "^3.1.0",
     "japa": "^3.0.1",
     "mrm": "^2.0.0",
@@ -51,7 +51,7 @@
     "ts-node": "^8.5.4",
     "typedoc": "^0.15.3",
     "typedoc-plugin-external-module-name": "^2.1.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   },
   "nyc": {
     "exclude": [

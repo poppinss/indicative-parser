@@ -7,17 +7,8 @@
  * file that was distributed with this source code.
  */
 
+import * as t from './src/Types'
+
 export { rulesParser, messagesParser } from './src/main'
-export {
-  ParsedRule,
-  ParsedMessages,
-  ParsedSchema,
-  ParsedFieldsMessages,
-  ParsedRulesMessages,
-  Schema,
-  SchemaNodeArray,
-  SchemaNodeLiteral,
-  SchemaNodeObject,
-  Message,
-  Messages,
-} from './src/contracts'
+export * from './src/Contracts'
+export { t }

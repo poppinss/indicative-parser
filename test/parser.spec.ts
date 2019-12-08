@@ -415,7 +415,7 @@ test.group('Parser | schema', () => {
     })
   })
 
-  test('parse array expression without childs on wildcard index', (assert) => {
+  test('parse array expression without children on wildcard index', (assert) => {
     const output = parse({
       'users.*': 'required',
     })
@@ -439,7 +439,7 @@ test.group('Parser | schema', () => {
   })
 
   test('raise error when object is reshaped as an array', (assert) => {
-    const output = () => parse({
+    const output: (() => ReturnType<typeof parse>) = () => parse({
       'user.username': 'required',
       'user.*': 'required',
     })
@@ -448,7 +448,7 @@ test.group('Parser | schema', () => {
   })
 
   test('raise error when array is reshaped as an object', (assert) => {
-    const output = () => parse({
+    const output: (() => ReturnType<typeof parse>) = () => parse({
       'user.*': 'required',
       'user.username': 'required',
     })
@@ -457,7 +457,7 @@ test.group('Parser | schema', () => {
   })
 
   test('raise error when rule value is missing', (assert) => {
-    const output = () => parse({
+    const output: (() => ReturnType<typeof parse>) = () => parse({
       'user.username': '',
     })
 
@@ -505,6 +505,39 @@ test.group('Parser | schema', () => {
                   name: 'dateFormat',
                   args: [],
                 }],
+              },
+            },
+          },
+        },
+      },
+    })
+  })
+
+  test.skip('parse array expression with nested array', (assert) => {
+    const output = parse({
+      'users.*.*': 'required',
+    })
+
+    assert.deepEqual(output, {
+      users: {
+        type: 'array',
+        rules: [],
+        each: {
+          '*': {
+            rules: [],
+            children: {
+              '*': {
+                type: 'array',
+                rules: [],
+                each: {
+                  '*': {
+                    rules: [{
+                      name: 'required',
+                      args: [],
+                    }],
+                    children: {},
+                  },
+                },
               },
             },
           },

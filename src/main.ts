@@ -12,14 +12,15 @@ import ArrayPresenter from 'haye/dist/haye-array-presenter'
 
 import {
   Schema,
-  ParsedSchema,
+  Messages,
   ParsedRule,
-  SchemaNodeLiteral,
+  ParsedSchema,
+  ParsedMessages,
   SchemaNodeArray,
   SchemaNodeObject,
-  ParsedMessages,
-  Messages,
-} from './contracts'
+  SchemaNodeLiteral,
+  ParsedTypedSchema,
+} from './Contracts'
 
 function toCamelCase (ruleName: string): string {
   return ruleName.replace(/_(\w)/g, (_match, group) => group.toUpperCase())
@@ -122,6 +123,27 @@ function parseFieldForRules (
     }
 
     /**
+     * Nested arrays
+     */
+    if (isArray) {
+      /**
+       * The code after the error works fine. However, in order to support
+       * 2d arrays, we need to implement them inside the declarative
+       * schema and compiler as well.
+       *
+       * For now, it's okay to skip this feature and later work on it
+       * across all the modules.
+       */
+      throw new Error('2d arrays are currently not supported')
+      // const item = setArray(
+      //   (out as SchemaNodeArray).each[token].children,
+      //   token,
+      //   isIndexedArray ? tokens[index] : '*',
+      // )
+      // return parseFieldForRules(tokens, rules, item, index)
+    }
+
+    /**
      * Otherwise continue recursion
      */
     return parseFieldForRules(tokens, rules, (out as SchemaNodeArray).each[token].children, index)
@@ -185,9 +207,9 @@ function parseFieldForRules (
  * }
  * ```
  */
-export function rulesParser (schema: Schema): ParsedSchema {
+export function rulesParser (schema: ParsedTypedSchema | Schema): ParsedSchema {
   return Object
-    .keys(schema)
+    .keys(schema.schema ? schema.schema : schema)
     .reduce((result: ParsedSchema, field: string) => {
       const rules = schema[field]
       let parsedRules: ParsedRule[] = []
