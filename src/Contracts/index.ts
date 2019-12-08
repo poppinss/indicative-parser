@@ -189,9 +189,9 @@ export type TypedSchema = { [key: string]: TypeDeclarations }
 /**
  * Shape of typed schema after getting parsed
  */
-export type ParsedTypedSchema = {
+export type ParsedTypedSchema<T extends TypedSchema> = {
   schema: ParsedSchema,
-  props: TypedSchema,
+  props: { [P in keyof T]: T[P]['t'] },
 }
 
 /**

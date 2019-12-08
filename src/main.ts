@@ -14,6 +14,7 @@ import {
   Schema,
   Messages,
   ParsedRule,
+  TypedSchema,
   ParsedSchema,
   ParsedMessages,
   SchemaNodeArray,
@@ -207,9 +208,13 @@ function parseFieldForRules (
  * }
  * ```
  */
-export function rulesParser (schema: ParsedTypedSchema | Schema): ParsedSchema {
+export function rulesParser (schema: ParsedTypedSchema<TypedSchema> | Schema): ParsedSchema {
+  if (schema.schema) {
+    return schema.schema as ParsedSchema
+  }
+
   return Object
-    .keys(schema.schema ? schema.schema : schema)
+    .keys(schema)
     .reduce((result: ParsedSchema, field: string) => {
       const rules = schema[field]
       let parsedRules: ParsedRule[] = []

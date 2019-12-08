@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
 */
 
-import { TypedSchema, ParsedSchema } from '../Contracts'
+import { TypedSchema, ParsedTypedSchema } from '../Contracts'
 
 /**
  * Parses a schema and returns it's parsed tree along with a
@@ -15,16 +15,9 @@ import { TypedSchema, ParsedSchema } from '../Contracts'
  */
 export function schema<
   Schema extends TypedSchema,
-  ReturnType extends { [K in keyof Schema]: Schema[K]['t'] },
-> (definedSchema: Schema): {
-  props: ReturnType,
-  schema: ParsedSchema,
-} {
+> (definedSchema: Schema): ParsedTypedSchema<Schema> {
   return Object.keys(definedSchema).reduce((result, key) => {
     result.schema[key] = definedSchema[key].getTree()
     return result
-  }, { schema: {} }) as unknown as {
-    schema: ParsedSchema,
-    props: ReturnType,
-  }
+  }, { schema: {} }) as unknown as ParsedTypedSchema<Schema>
 }
