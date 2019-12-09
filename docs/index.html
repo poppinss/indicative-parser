@@ -85,6 +85,7 @@
 				<ul>
 					<li><a href="#why-indicative-needs-a-parser">Why Indicative needs a parser?</a></li>
 					<li><a href="#usage">Usage</a></li>
+					<li><a href="#typed-schema">Typed schema</a></li>
 					<li><a href="#maintainers">Maintainers</a></li>
 				</ul>
 				<!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -97,7 +98,7 @@
   <span class="hljs-string">'account.type'</span>: <span class="hljs-string">'required|in:email,social'</span>
 }</code></pre>
 				<p>One way is to loop over the schema object keys, split them by <code>.</code> and then inline execute the validations for each field. This process is very straight forward, but will have performance issues.</p>
-				<p>Instead, we pre-compile the schema (later cache it) and generate a tree, which is easier to reason about and then generated optimized functions from the parsed tree.</p>
+				<p>Instead, we parse the schema into a tree. The tree is later converted to an array of top level functions that are highly optimized for performance.</p>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
@@ -147,6 +148,18 @@ rulesParser({
     }
   }
 }</code></pre>
+				<a href="#typed-schema" id="typed-schema" style="color: inherit; text-decoration: none;">
+					<h2>Typed schema</h2>
+				</a>
+				<p>The parser also allows creating declarative schema that has static type information along with the parsed tree. The type information is really helpful for Typescript projects.</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { rulesParser, t } <span class="hljs-keyword">from</span> <span class="hljs-string">'indicative-parser'</span>
+
+rulesParser(t.schema({
+  username: t.string(),
+  account: t.object().members({
+    <span class="hljs-keyword">type</span>: t.string(validations.in([<span class="hljs-string">'email'</span>, <span class="hljs-string">'social'</span>]))
+  })
+}))</code></pre>
 				<a href="#maintainers" id="maintainers" style="color: inherit; text-decoration: none;">
 					<h2>Maintainers</h2>
 				</a>
