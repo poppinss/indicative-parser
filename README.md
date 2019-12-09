@@ -21,6 +21,7 @@ Do note, that the `literal` **type is not equal to literal values in Javascript*
 
 - [Why Indicative needs a parser?](#why-indicative-needs-a-parser)
 - [Usage](#usage)
+- [Typed schema](#typed-schema)
 - [Maintainers](#maintainers)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -37,7 +38,7 @@ If you look at the Indicative schema, it is very concise and developer friendly.
 
 One way is to loop over the schema object keys, split them by `.` and then inline execute the validations for each field. This process is very straight forward, but will have performance issues.
 
-Instead, we pre-compile the schema (later cache it) and generate a tree, which is easier to reason about and then generated optimized functions from the parsed tree.
+Instead, we parse the schema into a tree. The tree is later converted to an array of top level functions that are highly optimized for performance.
 
 ## Usage
 Install the package from npm registry as follows:
@@ -96,6 +97,21 @@ Above code outputs the following tree.
     }
   }
 }
+```
+
+## Typed schema
+
+The parser also allows creating declarative schema that has static type information along with the parsed tree. The type information is really helpful for Typescript projects.
+
+```ts
+import { rulesParser, t } from 'indicative-parser'
+
+rulesParser(t.schema({
+  username: t.string(),
+  account: t.object().members({
+    type: t.string(validations.in(['email', 'social']))
+  })
+}))
 ```
 
 ## Maintainers
