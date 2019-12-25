@@ -43,10 +43,10 @@ Instead, we parse the schema into a tree. The tree is later converted to an arra
 Install the package from npm registry as follows:
 
 ```sh
-npm i indicative-parser@alpha
+npm i indicative-parser
 
 # yarn
-yarn add indicative-parser@alpha
+yarn add indicative-parser
 ```
 
 and then use it as follows:
