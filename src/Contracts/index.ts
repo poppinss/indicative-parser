@@ -86,7 +86,7 @@ export type Message = string | ((field: string, validation: string, args: any[])
 /**
  * Typed string
  */
-export type OpaqueString = string & { readonly __opaque__: 'string' }
+export type OpaqueString = string // & { readonly __opaque__: 'string' }
 export type StringTypeDeclaration = {
   t: OpaqueString,
   getTree (): SchemaNodeLiteral
@@ -99,7 +99,7 @@ export type OptionalStringTypeDeclaration = {
 /**
  * Typed number
  */
-export type OpaqueNumber = number & { readonly __opaque__: 'number' }
+export type OpaqueNumber = number // & { readonly __opaque__: 'number' }
 export type NumberTypeDeclaration = {
   t: OpaqueNumber,
   getTree (): SchemaNodeLiteral
@@ -112,7 +112,7 @@ export type OptionalNumberTypeDeclaration = {
 /**
  * Typed boolean
  */
-export type OpaqueBoolean = boolean & { readonly __opaque__: 'boolean' }
+export type OpaqueBoolean = boolean // & { readonly __opaque__: 'boolean' }
 export type BooleanTypeDeclaration = {
   t: OpaqueBoolean,
   getTree (): SchemaNodeLiteral
