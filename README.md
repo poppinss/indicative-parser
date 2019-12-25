@@ -22,7 +22,6 @@ Do note, that the `literal` **type is not equal to literal values in Javascript*
 - [Why Indicative needs a parser?](#why-indicative-needs-a-parser)
 - [Usage](#usage)
 - [Typed schema](#typed-schema)
-- [Maintainers](#maintainers)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -114,16 +113,14 @@ rulesParser(t.schema({
 }))
 ```
 
-## Maintainers
-[Harminder virk](https://github.com/thetutlage)
-
 [circleci-image]: https://img.shields.io/circleci/project/github/poppinss/indicative-parser/master.svg?style=for-the-badge&logo=circleci
 [circleci-url]: https://circleci.com/gh/poppinss/indicative-parser "circleci"
+
+[typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
+[typescript-url]:  "typescript"
 
 [npm-image]: https://img.shields.io/npm/v/indicative-parser.svg?style=for-the-badge&logo=npm
 [npm-url]: https://npmjs.org/package/indicative-parser "npm"
 
-[typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
-
-[license-url]: LICENSE.md
-[license-image]: https://img.shields.io/aur/license/pac.svg?style=for-the-badge
+[license-image]: https://img.shields.io/npm/l/indicative-parser?color=blueviolet&style=for-the-badge
+[license-url]: LICENSE.md "license"
