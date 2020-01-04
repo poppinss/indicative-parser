@@ -21,7 +21,6 @@ Do note, that the `literal` **type is not equal to literal values in Javascript*
 
 - [Why Indicative needs a parser?](#why-indicative-needs-a-parser)
 - [Usage](#usage)
-- [Typed schema](#typed-schema)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -96,21 +95,6 @@ Above code outputs the following tree.
     }
   }
 }
-```
-
-## Typed schema
-
-The parser also allows creating declarative schema that has static type information along with the parsed tree. The type information is really helpful for Typescript projects.
-
-```ts
-import { rulesParser, t } from 'indicative-parser'
-
-rulesParser(t.schema({
-  username: t.string(),
-  account: t.object().members({
-    type: t.string(validations.in(['email', 'social']))
-  })
-}))
 ```
 
 [circleci-image]: https://img.shields.io/circleci/project/github/poppinss/indicative-parser/master.svg?style=for-the-badge&logo=circleci

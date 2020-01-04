@@ -7,8 +7,5 @@
  * file that was distributed with this source code.
  */
 
-import * as t from './src/Types'
-
 export { rulesParser, messagesParser } from './src/main'
 export * from './src/Contracts'
-export { t }

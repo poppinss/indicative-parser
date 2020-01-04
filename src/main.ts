@@ -14,13 +14,11 @@ import {
   Schema,
   Messages,
   ParsedRule,
-  TypedSchema,
   ParsedSchema,
   ParsedMessages,
   SchemaNodeArray,
   SchemaNodeObject,
   SchemaNodeLiteral,
-  ParsedTypedSchema,
 } from './Contracts'
 
 function toCamelCase (ruleName: string): string {
@@ -208,11 +206,7 @@ function parseFieldForRules (
  * }
  * ```
  */
-export function rulesParser (schema: ParsedTypedSchema<TypedSchema> | Schema): ParsedSchema {
-  if (schema.schema) {
-    return schema.schema as ParsedSchema
-  }
-
+export function rulesParser (schema: Schema): ParsedSchema {
   return Object
     .keys(schema)
     .reduce((result: ParsedSchema, field: string) => {

@@ -10,7 +10,6 @@
 */
 
 import test from 'japa'
-import * as t from '../src/Types'
 import { rulesParser as parse, messagesParser } from '../src/main'
 
 test.group('Parser | schema', () => {
@@ -541,67 +540,6 @@ test.group('Parser | schema', () => {
                 },
               },
             },
-          },
-        },
-      },
-    })
-  })
-
-  test('parse declarative schema', (assert) => {
-    const output = parse(t.schema({
-      username: t.string(),
-    }))
-
-    assert.deepEqual(output, {
-      username: {
-        type: 'literal',
-        rules: [
-          {
-            name: 'required',
-            args: [],
-          },
-          {
-            name: 'string',
-            args: [],
-          },
-        ],
-      },
-    })
-  })
-
-  test('parse declarative object schema', (assert) => {
-    const output = parse(t.schema({
-      profile: t.object().members({
-        username: t.string(),
-      }),
-    }))
-
-    assert.deepEqual(output, {
-      profile: {
-        type: 'object',
-        rules: [
-          {
-            name: 'required',
-            args: [],
-          },
-          {
-            name: 'object',
-            args: [],
-          },
-        ],
-        children: {
-          username: {
-            type: 'literal',
-            rules: [
-              {
-                name: 'required',
-                args: [],
-              },
-              {
-                name: 'string',
-                args: [],
-              },
-            ],
           },
         },
       },
