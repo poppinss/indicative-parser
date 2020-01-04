@@ -1,6 +1,6 @@
 {
   "name": "indicative-parser",
-  "version": "7.1.4",
+  "version": "8.0.0",
   "description": "Schema parser for Indicative",
   "main": "build/index.js",
   "files": [
